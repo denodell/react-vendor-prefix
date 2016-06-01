@@ -9,10 +9,10 @@ let prefix = (function () {
       .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
       )[1];
   return {
-    dom: pre === 'ms' ? 'MS' : pre,
-    lowercase: pre,
-    css: '-' + pre + '-',
-    js: pre === 'ms' ? pre : pre[0].toUpperCase() + pre.substr(1)
+    dom: pre === 'ms' ? 'MS' : pre || '',
+    lowercase: pre || '',
+    css: '-' + (pre || '') + '-',
+    js: pre === 'ms' ? pre : (pre && !!pre.length ? pre[0].toUpperCase() + pre.substr(1) : '')
   };
 }());
 
